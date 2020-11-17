@@ -13,9 +13,16 @@
         controls muted width="640" height="480"></video>
     <script>
 
+        let cachedCurrentTime=0;
         const player = document.querySelector('video');
-        const log = ({ type }) => { console.log(`event:${type.toUpperCase()}`, player.currentTime) };
+        const log = ({ type }) => { console.log(`event:${type.toUpperCase()}`, player.currentTime, cachedCurrentTime) };
 
+
+        player.addEventListener('loadeddata', ()=>{
+            setInterval(() => {
+            cachedCurrentTime = player.currentTime;
+        }, 500);
+        });
         player.addEventListener('play', log);
         player.addEventListener('pause', log);
         player.addEventListener('seeking', log);
