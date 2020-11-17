@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <video crossorigin="anonymous"
+        src="https://media.swissinfo.ch/media/video/99c422f3-b808-4a60-9cc3-39ade3561dbb/rendition/3e1a0c5a-4ee4-4ba2-8a3d-f14a2f5f5b2c.mp4"
+        controls muted width="640" height="480"></video>
+    <script>
+
+        const player = document.querySelector('video');
+        const log = ({ type }) => { console.log(`event:${type.toUpperCase()}`, player.currentTime) };
+
+        player.addEventListener('play', log);
+        player.addEventListener('pause', log);
+        player.addEventListener('seeking', log);
+        player.addEventListener('seeked', log);
+
+    </script>
+
+</body>
+
+</html>
